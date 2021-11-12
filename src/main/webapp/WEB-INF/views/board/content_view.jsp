@@ -34,10 +34,10 @@
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1"></th>
-									<th class="cell100 column2"></th>
-									<th class="cell100 column3"></th>
-									<th class="cell100 column5"></th>
+									<th class="cell100 column1"><c:out value="${content_view.b_subject}"/></th>
+									<th class="cell100 column2"><c:out value="${content_view.b_name}"/></th>
+									<th class="cell100 column3"><c:out value="${content_view.b_date}"/></th>
+									<th class="cell100 column5"><c:out value="${content_view.b_no}"/></th>
 								</tr>
 							</thead>
 						</table>
@@ -47,13 +47,24 @@
 						<table>
 							<tbody>
 								<tr class="row100 body">
+									<td class="cell100 column1"><c:out value="${content_view.b_content}"/></td>
+								</tr>
+								<%--
+								<tr class="row100 body">
+									<td class="cell100 column1"><c:out value="${content_view.b_date}"/></td>
+								</tr>
+								--%>
+								<tr class="row100 body">
+									<td class="cell100 colomn1"><a href="list">목록보기</a></td>
+								</tr>
+								<%--
+								<tr class="row100 body">
 									<td class="cell100 column1"><c:out value="${dto.b_subject}"/></td>
 									<td class="cell100 column2"><c:out value="${dto.b_name}"/></td>
 									<td class="cell100 column3"><c:out value="${dto.b_date}"/></td>
 									<td class="cell100 column5"><c:out value="${dto.b_no}"/></td>
-									<!-- 마스터에서 추가  -->
-									<!-- DB branch 추가 -->
 								</tr>
+								--%>
 							</tbody>
 						</table>
 					</div>
