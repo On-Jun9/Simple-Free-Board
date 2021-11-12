@@ -51,6 +51,8 @@
 									<td class="cell100 column2"><c:out value="${dto.b_name}"/></td>
 									<td class="cell100 column3"><c:out value="${dto.b_date}"/></td>
 									<td class="cell100 column5"><c:out value="${dto.b_no}"/></td>
+									
+									<!-- DB branch 추가 -->
 								</tr>
 							</tbody>
 						</table>
