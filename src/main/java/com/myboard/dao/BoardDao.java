@@ -73,19 +73,20 @@ public class BoardDao {
 		return dtos;
 	}
 
-	public void write(String b_name,String b_subject,String b_content) {
+	public void write(String b_name,String b_subject,String b_content,Timestamp b_date) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into sfb_board(b_no,b_name,b_subject,b_content) "
-					+ "values(sfb_board_seq.nextval,?,?,?)";
+			String query = "insert into sfb_board(b_no,b_name,b_subject,b_content,b_date) "
+					+ "values(sfb_board_seq.nextval,?,?,?,?)";
 			
 			preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setString(1, b_name);
 			preparedStatement.setString(2, b_subject);
 			preparedStatement.setString(3, b_content);
+			preparedStatement.setTimestamp(4, b_date);
 			
 			int rn = preparedStatement.executeUpdate();
 		} catch (Exception e) {

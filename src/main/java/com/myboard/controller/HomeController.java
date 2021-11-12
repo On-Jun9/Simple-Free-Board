@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.myboard.service.BoardContentService;
 import com.myboard.service.BoardListService;
+import com.myboard.service.BoardWriteService;
 import com.myboard.service.IBoardService;
 
 
@@ -64,6 +65,24 @@ public class HomeController {
 		service.execute(model);
 		
 		return "/board/content_view";
+	}
+	
+	@RequestMapping("/write_view")
+	public String write_view(Model model) {
+		System.out.println("-----------------write_view()-----------------");
+		return "/board/write_view";
+	}
+	
+	@RequestMapping("/write")
+	public String write(HttpServletRequest request, Model model) {
+		System.out.println("-----------------write_view()-----------------");
+		model.addAttribute("request", request);
+		
+		service = new BoardWriteService();
+		service.execute(model);
+		
+		return "redirect:list";
+		
 	}
 	
 	

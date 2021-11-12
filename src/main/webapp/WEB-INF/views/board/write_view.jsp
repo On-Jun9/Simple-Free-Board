@@ -34,57 +34,54 @@
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1">제목</th>
-									<th class="cell100 column2">작성자</th>
-									<th class="cell100 column3">시간</th>
-									<th class="cell100 column5">No</th>
-								</tr>
-							</thead>
-						</table>
-					</div>
-
-					<div class="table100-body js-pscroll">
-						<table>
-							<tbody>
-							<c:forEach items="${list}" var="dto">
-								<tr class="row100 body">
-								
-									<td class="cell100 column1">
-										<a href="content_view?b_no=${dto.b_no}">
-											<c:out value="${dto.b_subject}"/>
-										</a>
-									</td>
-								
-									<td class="cell100 column2"><c:out value="${dto.b_name}"/></td>
-									<td class="cell100 column3"><c:out value="${dto.b_date}"/></td>
-									<td class="cell100 column5"><c:out value="${dto.b_no}"/></td>
-								</tr>
-							</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				
-				<div class="table100 ver2 m-b-110">
-					<div class="table100-head">
-						<table>
-							<thead>
-								<tr class="row100 head">
-									<th class="cell100 column1"></th>
+									<th class="cell100 column1">글쓰기</th>
 									<th class="cell100 column2"></th>
 									<th class="cell100 column3"></th>
-									<th class="cell100 column4"></th>
-									<th class="cell100 column5"><a href="write_view">쓰기</a></th>
+									<th class="cell100 column5"></th>
 								</tr>
 							</thead>
 						</table>
 					</div>
-				</div>		
+					
+					
+					
+					<div class="table100-body js-pscroll">
+					<form action="write" method="post" id="input">
+						<table>
+							<tbody>
+								<tr class="row100 body">
+									<td class="cell100 column1">제목</td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 column1"><input type="text" name="b_subject" size = "60"></td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 column1">작성자</td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 column1"><input type="text" name="b_name" size = "60"></td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 column1">내용</td>
+								</tr>
+								<tr class="row100 body">									
+									<td class="cell100 column1"><textarea name="b_content" rows="10" style="width: 1000px"></textarea></td>
+								</tr>
+								<tr class="row100 body">									
+									<td class="cell100 column1"><a href="#" onclick="document.getElementById('input').submit();">작성</a></td>
+								</tr>
+								<tr class="row100 body">
+									<td class="cell100 colomn1"><a href="list">목록보기</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	
 
 
 <!--===============================================================================================-->	
