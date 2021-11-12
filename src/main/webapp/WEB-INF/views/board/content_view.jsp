@@ -34,10 +34,10 @@
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1">제목</th>
-									<th class="cell100 column2">작성자</th>
-									<th class="cell100 column3">시간</th>
-									<th class="cell100 column5">No</th>
+									<th class="cell100 column1"></th>
+									<th class="cell100 column2"></th>
+									<th class="cell100 column3"></th>
+									<th class="cell100 column5"></th>
 								</tr>
 							</thead>
 						</table>
@@ -46,20 +46,12 @@
 					<div class="table100-body js-pscroll">
 						<table>
 							<tbody>
-							<c:forEach items="${list}" var="dto">
 								<tr class="row100 body">
-								
-									<td class="cell100 column1">
-										<a href="content_view?b_no=${dto.b_no}">
-											<c:out value="${dto.b_subject}"/>
-										</a>
-									</td>
-								
+									<td class="cell100 column1"><c:out value="${dto.b_subject}"/></td>
 									<td class="cell100 column2"><c:out value="${dto.b_name}"/></td>
 									<td class="cell100 column3"><c:out value="${dto.b_date}"/></td>
 									<td class="cell100 column5"><c:out value="${dto.b_no}"/></td>
 								</tr>
-							</c:forEach>
 							</tbody>
 						</table>
 					</div>
