@@ -52,6 +52,7 @@
 									<td class="cell100 column3"><c:out value="${dto.b_date}"/></td>
 									<td class="cell100 column5"><c:out value="${dto.b_no}"/></td>
 									<!-- 마스터에서 추가  -->
+									<!-- DB branch 추가 -->
 								</tr>
 							</tbody>
 						</table>
