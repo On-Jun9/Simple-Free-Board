@@ -11,18 +11,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.myboard.service.BoardListService;
+import com.myboard.service.IBoardService;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
 	
+	IBoardService service;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -33,7 +38,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		return "";
+	}
+	
+	@RequestMapping("/list")
+	public String list(Model model) {
+		
+		service = new BoardListService();
+		service.execute(model);
+		
 		return "/board/list";
 	}
+	
 	
 }
