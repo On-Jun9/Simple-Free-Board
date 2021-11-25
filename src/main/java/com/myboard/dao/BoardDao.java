@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,19 +15,19 @@ import javax.sql.DataSource;
 import com.myboard.dto.BoardDto;
 
 public class BoardDao {
-	
+
 	DataSource dataSource;
 	
 	public BoardDao() {
-		Context context;
-		try {
-			context = new InitialContext();//was와 연결된 context
-
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle");
-			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} 
+//		Context context;
+//		try {
+//			context = new InitialContext();//was와 연결된 context
+//
+//			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle");
+//
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 		
 		
 	}

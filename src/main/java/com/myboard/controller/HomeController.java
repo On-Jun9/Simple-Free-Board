@@ -6,17 +6,18 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.myboard.dto.BoardDto;
+import com.myboard.mapper.BoardMapper;
+import com.myboard.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.myboard.service.BoardContentService;
-import com.myboard.service.BoardListService;
-import com.myboard.service.BoardWriteService;
-import com.myboard.service.IBoardService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -32,6 +33,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -48,21 +50,28 @@ public class HomeController {
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
-		
-		service = new BoardListService();
-		service.execute(model);
+		model.addAttribute("list",boardService.listView());
+//		model.addAttribute("list",boardListService.list());
+//		service = new BoardListService();
+//		service.execute(model);
 		
 		return "/board/list";
 	}
-	
-	@RequestMapping("/content_view")
-	public String Content_view(HttpServletRequest request,Model model) {
+
+	@Autowired
+	private BoardServiceImpl boardService;
+
+	@RequestMapping("/temp")
+	public String test(Model model){
+		model.addAttribute("viewAll",boardService.viewAll());
+		return "/board/temp";
+	}
+
+	@RequestMapping(value = "/content_view",method = RequestMethod.GET)
+	public String Content_view(Model model, @RequestParam(value = "b_no") int seq) {
 		
-		System.out.println("-----------------Content_view()-----------------");
-		model.addAttribute("request", request);
-		service = new BoardContentService();
-		
-		service.execute(model);
+		System.out.println("-----------------Content_view()-----------------" + seq);
+		model.addAttribute("content_view",boardService.contentView(seq));
 		
 		return "/board/content_view";
 	}
@@ -74,12 +83,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/write")
-	public String write(HttpServletRequest request, Model model) {
+	public String write(BoardDto vo) {
 		System.out.println("-----------------write_view()-----------------");
-		model.addAttribute("request", request);
-		
-		service = new BoardWriteService();
-		service.execute(model);
+		boardService.insertBoard(vo);
 		
 		return "redirect:list";
 		

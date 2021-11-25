@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.myboard.mapper.BoardMapper">
+
+    <select id="viewAll" resultType="com.myboard.dto.BoardDto">
+        SELECT * FROM sfb_board ORDER BY b_no DESC
+    </select>
+
+    <select id="listView" resultType="com.myboard.dto.BoardDto">
+        SELECT b_no, b_name, b_subject, b_content, b_date FROM sfb_board ORDER BY b_no desc
+    </select>
+
+    <insert id="insertBoard" parameterType="com.myboard.dto.BoardDto">
+        insert into sfb_board(b_no,b_name,b_subject,b_content,b_date)
+        values(sfb_board_seq.nextval,#{b_name},#{b_subject},#{b_content},sysdate)
+    </insert>
+
+    <select id="contentView" resultType="com.myboard.dto.BoardDto" parameterType="int">
+        select * from sfb_board where b_no=#{b_no}
+    </select>
+</mapper>
